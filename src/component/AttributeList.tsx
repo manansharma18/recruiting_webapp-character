@@ -1,4 +1,3 @@
-import React from "react";
 import { ATTRIBUTE_LIST } from "../consts";
 import { Attributes } from "../types";
 
