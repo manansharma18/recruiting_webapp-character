@@ -5,23 +5,15 @@ type AttributesProps = {
   attributes: Attributes;
   handleIncreaseAttribute: (attribute) => void;
   handleDecreaseAttribute: (attribute) => void;
+  calculateModifier: (attribute) => number;
 };
 
 const AttributeList = ({
   attributes,
   handleIncreaseAttribute,
   handleDecreaseAttribute,
+  calculateModifier,
 }: AttributesProps) => {
-  const calculateModifier = (attribute: keyof Attributes) => {
-    // derived state
-    if (attributes[attribute] > 10) {
-      return Math.floor((attributes[attribute] - 10) / 2);
-    } else if (attributes[attribute] < 10) {
-      return Math.floor((attributes[attribute] - 10) / 2);
-    }
-    return 0;
-  };
-
   return (
     <>
       {ATTRIBUTE_LIST.map((attribute: keyof Attributes) => {
