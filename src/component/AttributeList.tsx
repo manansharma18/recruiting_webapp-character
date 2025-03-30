@@ -12,6 +12,16 @@ const AttributeList = ({
   handleIncreaseAttribute,
   handleDecreaseAttribute,
 }: AttributesProps) => {
+  const calculateModifier = (attribute: keyof Attributes) => {
+    // derived state
+    if (attributes[attribute] > 10) {
+      return Math.floor((attributes[attribute] - 10) / 2);
+    } else if (attributes[attribute] < 10) {
+      return Math.floor((attributes[attribute] - 10) / 2);
+    }
+    return 0;
+  };
+
   return (
     <>
       {ATTRIBUTE_LIST.map((attribute: keyof Attributes) => {
@@ -19,6 +29,7 @@ const AttributeList = ({
           <div key={attribute}>
             {attribute} Value:
             {attributes[attribute]}
+            (Modifier :{calculateModifier(attribute)})
             <button
               id={attribute}
               onClick={() => handleIncreaseAttribute(attribute)}

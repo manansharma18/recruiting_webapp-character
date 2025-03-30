@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import { CLASS_LIST } from "./consts.ts";
+import { CLASS_LIST, SKILL_LIST } from "./consts.ts";
 import { Attributes, Class } from "./types";
 import AttributeList from "./component/AttributeList.tsx";
 import ClassList from "./component/ClassList.tsx";
@@ -35,7 +35,8 @@ function App() {
     );
     return output;
   };
-
+  
+  const totalPoints = () => Object.values(attributes).reduce((prev,curr)=>prev + curr);
   return (
     <div className="App">
       <header className="App-header">
@@ -50,7 +51,24 @@ function App() {
           />
         </section>
         <section className="App-section">
-          <ClassList changeColor ={changeColor}/>
+          <ClassList changeColor={changeColor} />
+        </section>
+        <section className="App-section">
+          {SKILL_LIST.map(
+            ({ name, attributeModifier }) => (
+              <div key={name}>
+                {name}:0 (Modified {attributeModifier}) :0
+                <button id={name} onClick={() => {}}>
+                  +
+                </button>
+                <button id={name} onClick={() => {}}>
+                  -
+                </button>
+                total : 0
+              </div>
+            ),
+            []
+          )}
         </section>
       </div>
     </div>
